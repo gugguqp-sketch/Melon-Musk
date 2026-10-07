@@ -1,32 +1,36 @@
-name: 오류 (Bug)
-description: 실행 중 생긴 문제 기록
-title: "[오류] "
-labels: ["bug"]
+name: 작업 (Task)
+description: 구현하거나 정리할 작업
+title: "[작업] "
+labels: ["task"]
 body:
-  - type: textarea
-    id: what
+  - type: dropdown
+    id: area
     attributes:
-      label: 무슨 일이 있었나요?
-      placeholder: 예) 두 차량 정지 후 CARLA 서버가 종료됨
+      label: 담당 영역
+      options:
+        - 시뮬레이션·제어·통합
+        - 관측·판단 로직
+        - 데이터 분석·평가
+        - 문서·발표
     validations:
       required: true
   - type: textarea
-    id: steps
+    id: goal
     attributes:
-      label: 재현 방법
+      label: 할 일
+      description: 무엇을, 왜 하는지 적어 주세요.
+      placeholder: 예) 차량 B 좌회전 경로의 대기 위치 정하기
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: 완료 기준
       placeholder: |
-        1. 실행한 명령어
-        2. 사용한 맵·설정
-        3. 몇 번 중 몇 번 발생했는지
-    validations:
-      required: true
-  - type: textarea
-    id: log
-    attributes:
-      label: 오류 메시지·로그
-      render: shell
+        - [ ] 대기 위치에서 A가 통과 가능한지 확인
+        - [ ] 결과 csv 저장
   - type: input
-    id: env
+    id: due
     attributes:
-      label: 실행 환경
-      placeholder: 예) Ubuntu 22.04, CARLA 0.9.15, Python 3.10.12
+      label: 목표 날짜
+      placeholder: 예) 10/15
